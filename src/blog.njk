@@ -1,0 +1,25 @@
+---
+layout: page.njk
+title: "Blog Posts"
+alias: blog
+eleventyComputed:
+  command: "ls posts/"
+pagination: 
+  data: collections.posts
+  size: 10
+---
+
+<ul class="post-list">
+    {%- for post in collections.posts | reverse %}
+        <li><span class="post-index-date">{{ post.date | shortDate }}</span> <a href="{{ post.url }}" class="internal-link">{{ post.data.title }}</a> {%- if post.data.tags %}{%- for tag in post.data.tags %} <a class="post-index-tag-link internal-link" href="/tags/{{ tag }}">{{ tag }}</a> {%- endfor %}{%- endif %}</li>
+    {%- endfor %}
+</ul>
+<nav class="post-list-nav" aria-label="pagination">
+    &lt;&lt; {% if page.url != pagination.href.first %}<a href="{{ pagination.href.first }}">First</a>{% else %}First{% endif %}
+    &lt; {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}
+    {%- for pageEntry in pagination.pages %}
+    <a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a>
+{%- endfor %}
+    {% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li> &gt;
+    {% if page.url != pagination.href.last %}<a href="{{ pagination.href.last }}">Last</a>{% else %}Last{% endif %}</li> &gt;&gt;
+</nav>

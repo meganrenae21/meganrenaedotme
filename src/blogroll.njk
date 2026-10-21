@@ -1,0 +1,13 @@
+---
+layout: page.njk
+title: Blogroll
+alias: blogroll
+eleventyComputed:
+  command: "open blogroll"
+---
+
+<ul>
+    {%- for item in blogroll %}
+        <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+    {%- endfor %}
+</ul>

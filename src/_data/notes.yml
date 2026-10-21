@@ -1,0 +1,2 @@
+- name: orgblog
+  text: "This post was originally written for my original blog, Meg in Progress. Back then, my blog was entirely written and published using org-mode. Though I still use org-mode for a variety of purposes, the process of blogging with org-mode became too complicated for me, and Meg in Progress soon fell by the wayside. I now use Jekyll."

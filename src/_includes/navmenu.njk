@@ -1,0 +1,5 @@
+        <div class="home-menu" id="home-menu-links">
+            {%- for pg in collections.pages %}
+                <a href="{{ pg.url }}" class="nav-link internal-link">{{ pg.data.alias }}</a>
+            {%- endfor %}
+        </div>

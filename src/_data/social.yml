@@ -1,0 +1,15 @@
+- name: github
+  icon: "fa-brands fa-github"
+  url: https://github.com/meganrenae21
+- name: codepen
+  icon: "fa-brands fa-codepen"
+  url: https://codepen.io/megan-durham
+- name: dev.to
+  icon: "fa-brands fa-dev"
+  url: https://dev.to/meganrenae21
+- name: blueksy
+  icon: "fa-brands fa-bluesky"
+  url: "http://meganrenae.bsky.social"
+- name: mastodon
+  icon: "fa-brands fa-mastodon"
+  url: "https://mas.to/@meganrenae"

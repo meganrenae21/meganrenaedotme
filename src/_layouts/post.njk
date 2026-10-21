@@ -1,0 +1,11 @@
+---
+layout: base.njk
+---
+
+<h2 class="post-title">{{ title }}</h2>
+<p class="post-metadata">Filed{% if tags %} under {% for tag in tags %}<a class="post-tag internal-link" href="/tags/{{ tag }}/">{{ tag }}</a> {% endfor %}{% endif %}on {{ page.date | shortDate }}</p>
+{% if note %}
+{% set n = notes | where("name", note) %}
+<p class="post-note">{{ n[0].text }}</p>
+{% endif %}
+{{ content | safe }}

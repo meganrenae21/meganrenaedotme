@@ -1,0 +1,20 @@
+---
+eleventyExcludeFromCollections: true
+layout: page.njk
+permalink: tags/{{ tag | slug }}
+eleventyComputed:
+  command: "ls posts --{{ permalink | safe }}"
+pagination: 
+  data: collections.tags
+  size: 1
+  alias: tag
+---
+
+<h2 class="page-title">All posts tagged with <em>{{ tag }}</em></h2>
+<ul class="post-list">
+    {%- for post in collections.posts | reverse %}
+        {%- if tag in post.data.tags %}
+        <li><span class="post-index-date">{{ post.date | shortDate }}</span> <a href="{{ post.url }}" class="internal-link">{{ post.data.title }}</a></li>
+        {%- endif %}
+    {%- endfor %}
+</ul>

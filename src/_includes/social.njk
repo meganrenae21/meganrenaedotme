@@ -1,0 +1,7 @@
+<div id="social-box">
+    {%- for item in social %}
+        <a rel="me" href="{{ item.url }}" aria-label="{{ item.name }}">
+            <i class="{{ item.icon }}"></i>
+        </a>
+    {%- endfor %}
+</div>
