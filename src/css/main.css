@@ -479,6 +479,43 @@ p:has(button) {
   text-align: center;
 }
 
+.webmentions {
+  font-family: var(--code-font);
+  font-size: 16px;
+}
+
+.wm-title {
+  align-self: center;
+  background-color: var(--white);
+  text-align: center;
+  font-family: var(--code-font);
+  margin-top: 0.5rem;
+}
+
+.wm-facepile,
+.wm-heading,
+.wm-faces,
+.wm-face,
+.wm-avatar,
+.wm-avatar-empty {
+  display: none !important;
+}
+
+div[data-webmention-target] {
+  width: 90%;
+  align-self: center;
+}
+
+.wm-reply {
+  border: 2px dashed var(--white) !important;
+  margin-bottom: 1rem;
+}
+
+.wm-reply > * {
+  padding: 0.1em 0.5em;
+  margin: 0;
+}
+
 @media (width > 1000px) {
   #terminal {
     width: 50%;

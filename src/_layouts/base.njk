@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>megan renae</title>
+    <link rel="webmention" href="https://webmention.io/meganrenae.me/webmention" />
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml">
+    <link rel="stylesheet" href="https://webmention.io/assets/webmention-render.css">
     <link rel="stylesheet" href="{{ paths.css }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -25,6 +27,10 @@
           {% comments %}
             {{ comments_url }}
           {% endcomments %}
+        {% endif %}
+        {% if layout === "post.njk" %}
+          <div data-webmention-target="https://meganrenae.me/post/{{ permalink }}" data-webmention-api="https://webmention.io/api/mentions.jf2"></div>
+          <script src="https://webmention.io/js/webmention-render.js" defer></script>
         {% endif %}
         {% include 'social.njk' %}
         {% include 'coffee.njk' %}
