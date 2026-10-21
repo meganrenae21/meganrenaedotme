@@ -5,6 +5,7 @@ import { footnote } from "@mdit/plugin-footnote";
 import { container } from "@mdit/plugin-container"
 import { DateTime } from "luxon";
 import YAML from "yaml"
+import { feedPlugin } from "@11ty/eleventy-plugin-rss"
 
 export const config = {
     dir: {
@@ -108,5 +109,24 @@ export default function (eleventyConfig) {
     })
     eleventyConfig.addFilter("where", function(array, key, value) {
         return array.filter(item => item[key] === value);
+    })
+
+    eleventyConfig.addPlugin(feedPlugin, {
+        type: "atom",
+        outputPath: "/feed.xml",
+        collection: {
+            name: "posts",
+            limit: 0,
+            sort: "descending"
+        },
+        metadata: {
+            language: "en",
+            title: "Megan Renae",
+            subtitle: "Writer, Developer, Storyteller",
+            base: "https://meganrenae.me",
+            author: {
+                name: "Megan Renae"
+            }
+        }
     })
 }

@@ -13,3 +13,6 @@
 - name: mastodon
   icon: "fa-brands fa-mastodon"
   url: "https://mas.to/@meganrenae"
+- name: "atom feed"
+  icon: "fa-solid fa-rss"
+  url: /feed.xml
