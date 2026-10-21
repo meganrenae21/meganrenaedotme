@@ -2,7 +2,7 @@
 layout: post.njk
 title: "From org to Jekyll:  A New Beginning"
 date: 2025-06-28
-permalink: posts/org-to-jekyll-new-beginning
+permalink: posts/org-to-jekyll-new-beginning.html
 tags: [jekyll, blogging]
 comments_url: https://komments.cloud/79bf7f36f98c683267a4b9
 ---

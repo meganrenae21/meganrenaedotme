@@ -3,7 +3,7 @@ layout: post.njk
 title: "Blogging with Org-Mode: An Update"
 date: 2020-08-22
 note: orgblog
-permalink: posts/org-mode-blog-pt-2
+permalink: posts/org-mode-blog-pt-2.html
 comments_url: https://komments.cloud/eb583a215ac590da0064d7
 tags: [orgmode, emacs, webdev]
 ---

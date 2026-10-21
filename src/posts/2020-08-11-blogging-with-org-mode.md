@@ -3,7 +3,7 @@ layout: post.njk
 title: "How I built a simple static blog with org-mode"
 date: 2020-08-11
 note: orgblog
-permalink: posts/blogging-with-org-mode
+permalink: posts/blogging-with-org-mode.html
 comments_url: https://komments.cloud/0a1318afb4638ad51e8e68
 tags: [orgmode, emacs, webdev]
 ---

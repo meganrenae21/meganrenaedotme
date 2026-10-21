@@ -2,7 +2,7 @@
 layout: post.njk
 title: "Algorithms, Randomness, and Algorithmic Randomness"
 date: 2025-10-18
-permalink: posts/algorithms-randomness-algorithmic-randomness
+permalink: posts/algorithms-randomness-algorithmic-randomness.html
 comments_url: https://komments.cloud/294631e4517579debcf10a
 tags: [algorithms, programming, procgen, generative-art, randomness]
 ---
