@@ -188,17 +188,20 @@ h6 {
 }
 
 pre {
-  color: var(--white);
+  color: var(--yellow);
   font-family: var(--code-font);
   font-size: 14px;
-  border: 1px dashed var(--white);
+  border: 1px dashed var(--yellow);
   width: 80%;
   align-self: center;
+  padding: 0.5em;
 }
 
 code:not(pre code) {
-  color: var(--yellow-mid-dark);
+  color: var(--yellow);
   font-size: 15px;
+  border: 1px dotted var(--yellow);
+  padding: 0.2em;
 }
 
 ul {
