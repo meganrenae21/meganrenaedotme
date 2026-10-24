@@ -348,7 +348,9 @@ li.footnote-item {
 }
 
 li.footnote-item > p {
-  margin: 0 3em;
+  margin: 0 0.2em;
+  padding: 0 0;
+  display: inline;
 }
 
 
@@ -525,6 +527,20 @@ div[data-webmention-target] {
 
 footer {
   font-family: var(--code-font);
+}
+
+hr.footnotes-sep {
+  display: none;
+}
+
+section.footnotes {
+  padding: 0;
+  margin: 0;
+}
+
+ol.footnotes-list {
+  padding: 0;
+  margin: 0;
 }
 
 @media (width > 400px) {
