@@ -3,22 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A storyteller's blog about the intersection of creativity and technology." />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="generator" content="Eleventy" />
     <title>megan renae</title>
     <link rel="webmention" href="https://webmention.io/meganrenae.me/webmention" />
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml">
-    <link rel="stylesheet" href="https://webmention.io/assets/webmention-render.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://ka-f.fontawesome.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="{{ paths.css }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <script src="https://kit.fontawesome.com/1df0fd71fd.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1df0fd71fd.js" crossorigin="anonymous" defer></script>
   </head>
   <body>
-    <div id="container">
+    <main role="main" id="container">
       <div id="terminal">
-        <div id="top-bar">MROS</div>
-        <p class="term-log term-log-old">user@meganrenae.me:~$ <span class="entry"></span>
+        <header role="banner"id="top-bar">MROS</header>
+        <p class="term-log term-log-old">user@meganrenae.me:~$ <span class="entry"></span></p>
         <h1 class="title">megan_renae</h1>
         <p class="subtitle">version {{ pkg.version }}</p>
         {% include 'navmenu.njk' %}
@@ -31,6 +34,7 @@
         {% endif %}
         {% if layout === "post.njk" %}
           <div data-webmention-target="https://meganrenae.me/post/{{ permalink }}" data-webmention-api="https://webmention.io/api/mentions.jf2"></div>
+          <link rel="stylesheet" href="https://webmention.io/assets/webmention-render.css">
           <script src="https://webmention.io/js/webmention-render.js" defer></script>
         {% endif %}
         {% include 'social.njk' %}
@@ -38,7 +42,7 @@
         {% include 'license.njk' %}
         <p class="term-log prompt-log">user@meganrenae.me:~{{ page.url }}$ <span class="entry" id="prompt-entry"> </span></p>
       </div> 
-    </div>
+    </main>
     <script src={{ paths.js }} type="module"></script>
   </body>
 </html>

@@ -1,5 +1,6 @@
-        <div class="home-menu" id="home-menu-links">
+        <button class="nav-toggle" aria-label="navigation" data-toggle="home-menu-links"><i class="fa-solid fa-bars fa-xl"></i></button>
+        <nav role="navigation" class="home-menu mobile-hide-children" id="home-menu-links">
             {%- for pg in collections.pages %}
                 <a href="{{ pg.url }}" class="nav-link internal-link">{{ pg.data.alias }}</a>
             {%- endfor %}
-        </div>
+        </nav>
