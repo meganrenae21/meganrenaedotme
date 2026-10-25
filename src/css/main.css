@@ -185,6 +185,8 @@ pre {
   width: 80%;
   align-self: center;
   padding: 0.5em;
+  letter-spacing: 1.1;
+  white-space: pre-wrap;
 }
 
 code:not(pre code) {
