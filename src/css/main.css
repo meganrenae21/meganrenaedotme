@@ -251,6 +251,7 @@ p.subtitle {
 
 p.img-container {
   text-align: center;
+  align-self: center;
 }
 
 p.img-container > img {
