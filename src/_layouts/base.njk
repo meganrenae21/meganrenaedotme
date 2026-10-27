@@ -13,16 +13,17 @@
     <link rel="preconnect" href="https://ka-f.fontawesome.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="{{ paths.css }}" />
+    <link rel="stylesheet" href="/css/prism.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <script src="https://kit.fontawesome.com/1df0fd71fd.js" crossorigin="anonymous" defer></script>
   </head>
   <body>
-    <main role="main" id="container">
+    <div id="container">
       <div id="terminal">
-        <header role="banner"id="top-bar">MROS</header>
+        <div id="top-bar">MROS</div>
         <p class="term-log term-log-old">user@meganrenae.me:~$ <span class="entry"></span></p>
-        <h1 class="title">megan_renae</h1>
+        <header role="banner"><h1 class="title">megan_renae</h1></header>
         <p class="subtitle">version {{ pkg.version }}</p>
         {% include 'navmenu.njk' %}
         {{ content | safe }}
@@ -42,7 +43,7 @@
         {% include 'license.njk' %}
         <p class="term-log prompt-log">user@meganrenae.me:~{{ page.url }}$ <span class="entry" id="prompt-entry"> </span></p>
       </div> 
-    </main>
+    </div>
     <script src={{ paths.js }} type="module"></script>
   </body>
 </html>

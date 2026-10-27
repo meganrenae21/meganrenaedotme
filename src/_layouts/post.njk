@@ -8,4 +8,6 @@ layout: base.njk
 {% set n = notes | where("name", note) %}
 <p class="post-note">{{ n[0].text }}</p>
 {% endif %}
+<main role="main">
 {{ content | safe }}
+</main>

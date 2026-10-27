@@ -6,6 +6,7 @@ import { container } from "@mdit/plugin-container"
 import { DateTime } from "luxon";
 import YAML from "yaml"
 import { feedPlugin } from "@11ty/eleventy-plugin-rss"
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 
 export const config = {
     dir: {
@@ -129,6 +130,8 @@ export default function (eleventyConfig) {
             }
         }
     })
+
+    eleventyConfig.addPlugin(syntaxHighlight);
 
     eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
         if(data.draft && process.env.ELEVENTY_RUN_MODE === "build") {

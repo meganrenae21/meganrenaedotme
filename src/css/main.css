@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 * {
-  box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 :root {
@@ -49,6 +49,20 @@ body {
   overflow: hidden;
 }
 
+header {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+header > * {
+  margin: 0;
+  padding: 0;
+}
+
 p, ul, ol, dl {
   font-size: 16px;
   color: var(--white);
@@ -87,7 +101,7 @@ blockquote {
   width: 50%;
 }
 
-nav.post-list-nav {
+.post-list-nav {
   color: var(--white);
   text-align: center;
   align-self: center;
@@ -113,6 +127,26 @@ a:hover {
   left: 0;
 }
 
+pre {
+  width: 80%;
+  align-self: center;
+  overflow-x: auto;
+  padding: 0.5em;
+  position: relative;
+  border: 1px dashed var(--yellow);
+}
+
+pre::before {
+  content: attr(data-language);
+  background-color: var(--yellow);
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  padding: 0;
+  margin: 0;
+  color: var(--box-bg);
+}
+
 #top-bar {
   text-align: center;
   background-color: var(--box-border);
@@ -135,6 +169,7 @@ h1.title {
   text-shadow: 5px 5px var(--magenta-mid-light);
   line-height: 0.8em;
   text-align: center;
+  width: 100%;
 }
 
 h2.page-title,
@@ -151,8 +186,9 @@ h2.post-title {
 h3 {
     color: var(--yellow);
     font-family: var(--code-font);
-    font-size: 16px;
+    font-size: 18px;
     background-color: var(--purple-mid-dark);
+    align-self: stretch;
 }
 
 h4 {
@@ -177,16 +213,9 @@ h6 {
     font-size: 16px;
 }
 
-pre {
-  color: var(--yellow);
-  font-family: var(--code-font);
-  font-size: 14px;
-  border: 1px dashed var(--yellow);
-  width: 80%;
-  align-self: center;
-  padding: 0.5em;
-  letter-spacing: 1.1;
-  white-space: pre-wrap;
+h3, h4, h5, h6, p {
+padding: 0;
+margin: 0.5em 0 0.5em 0;
 }
 
 code:not(pre code) {
@@ -194,6 +223,16 @@ code:not(pre code) {
   font-size: 15px;
   border: 1px dotted var(--yellow);
   padding: 0.2em;
+}
+
+main {
+  width: calc(100% - 16px);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: flex-start;
 }
 
 ul {
@@ -321,7 +360,7 @@ a.post-index-tag-link::before {
   color: var(--yellow-mid-dark);
 }
 
-nav [aria-current] {
+[aria-current] {
   text-decoration: line-through;
 }
 
@@ -526,11 +565,6 @@ div[data-webmention-target] {
   scrollbar-width: thin;
   scrollbar-color: var(--purple);
 }
-
-footer {
-  font-family: var(--code-font);
-}
-
 hr.footnotes-sep {
   display: none;
 }
@@ -606,7 +640,7 @@ ol.footnotes-list {
     margin: 0;
     padding: 0 0 0.5em 0;
   }
-  nav.home-menu {
+  .home-menu {
     display: flex;
     flex-direction: column;
     align-items: stretch;
