@@ -1,13 +1,15 @@
 ---
 layout: base.njk
 ---
-
+<article class="h-entry">
+<a href="{{ permalink }}" class="u-url" aria-hidden="true" tabindex="-1"></a>
 <h2 class="post-title">{{ title }}</h2>
-<p class="post-metadata">Filed{% if tags %} under {% for tag in tags %}<a class="post-tag internal-link" href="/tags/{{ tag }}/">{{ tag }}</a> {% endfor %}{% endif %}on {{ page.date | shortDate }}</p>
+<p class="post-metadata">Filed{% if tags %} under {% for tag in tags %}<a class="post-tag internal-link p-category" href="/tags/{{ tag }}/">{{ tag }}</a> {% endfor %}{% endif %}on <span class="dt-published">{{ page.date | shortDate }}</span></p>
 {% if note %}
 {% set n = notes | where("name", note) %}
 <p class="post-note">{{ n[0].text }}</p>
 {% endif %}
-<main role="main">
+<main role="main" class="e-content">
 {{ content | safe }}
 </main>
+</article>

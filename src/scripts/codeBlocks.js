@@ -1,3 +1,15 @@
+function divCodeBlock(pre) {
+    const wrapper = document.createElement("div")
+    wrapper.classList.add("codeblock")
+
+    if (pre.dataset.language) {
+        wrapper.dataset.language = pre.dataset.language
+    }
+
+    pre.parentNode.insertBefore(wrapper, pre)
+    wrapper.appendChild(pre)
+}
+
 export function preLabels(){
 
     const languageNames = {
@@ -35,5 +47,8 @@ export function preLabels(){
         const lang = cls.replace('language-', '')
 
         pre.dataset.language = languageNames[lang] || lang.charAt(0).toUpperCase() + lang.slice(1)
+
+        divCodeBlock(pre)
     })
 }
+

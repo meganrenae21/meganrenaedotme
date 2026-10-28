@@ -128,23 +128,38 @@ a:hover {
 }
 
 pre {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 !important;
+  position: relative;
+  line-height: 1 !important;
+  padding: 1em 0.5em !important;
+}
+
+.codeblock {
   width: 80%;
   align-self: center;
   overflow-x: auto;
-  padding: 0.5em;
+  border: 1px dashed var(--yellow);
+  padding: 0 !important;
   position: relative;
   border: 1px dashed var(--yellow);
+  margin: 0.5em;
 }
 
-pre::before {
+
+.codeblock::before {
   content: attr(data-language);
   background-color: var(--yellow);
-  position: absolute;
-  top: 0em;
-  right: 0em;
   padding: 0;
   margin: 0;
   color: var(--box-bg);
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+  font-family: var(--code-font);
 }
 
 #top-bar {
@@ -159,7 +174,7 @@ pre::before {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
 }
 
 h1.title {
@@ -380,6 +395,7 @@ ol.footnotes-list {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  margin: 0.5em 0;
 }
 
 li.footnote-item {
@@ -572,12 +588,22 @@ hr.footnotes-sep {
 
 section.footnotes {
   padding: 0;
-  margin: 0;
+  margin: 0.5em 0;
 }
 
 ol.footnotes-list {
   padding: 0;
   margin: 0;
+}
+
+.h-entry {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 @media (width > 400px) {

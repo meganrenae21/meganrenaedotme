@@ -1,8 +1,7 @@
 ---
-draft: true
 layout: post.njk
 title: "Third Iteration: Welcome to My 11ty Terminal"
-date: 2026-10-23
+date: 2026-10-28
 permalink: posts/third-iteration-my-11ty-terminal.html
 tags: [eleventy, blogging, webdev]
 ---
@@ -13,7 +12,7 @@ It has been a year since my last post, and I have ([again](posts/org-to-jekyll-n
 
 The main thing I realized that Eleventy offered was more flexibility over my workflow. While Eleventy is zero-config by default, it runs on Node.js/JavaScript, and I am comfortable adjusting my own configuration and plugin settings. Jekyll runs on Ruby, which is not a language I'm familiar with, and has a more opinionated ecosystem. 
 
-With Eleventy, I was not locked in to a single templating language or directory structure. Jekyll uses the template language [Liquid](https://shopify.github.io/liquid/), which I found simple enough to learn. Eleventy offers Liquid as a default as well, though I went for [Nunjucks](https://mozilla.github.io/nunjucks/), which is a very similar templating language to Liquid but one that allows you to call JavaScripts functions on variables. 
+With Eleventy, I was not locked in to a single templating language or directory structure. Jekyll uses the template language [Liquid](https://shopify.github.io/liquid/), which I found simple enough to learn. Eleventy offers Liquid as a default as well, though I went for [Nunjucks](https://mozilla.github.io/nunjucks/), which is a very similar templating language to Liquid but one that allows you to call JavaScript functions on variables. 
 
 So, being able to easily integrate JavaScript on the client- and server-side made the biggest difference. That said, I still wanted to make sure I knew what I was doing before I decided to migrate everything over.  
 
@@ -532,6 +531,95 @@ tocSidebar()
 
 My experience in making The Bellwether reminded me how fun it could be to build websites from scratch, and I decided to try it again for this site's redesign. 
 
+I kept much of the same config I had from The Bellwether. That gave me a starting point. Then I (again through CodeSandbox) got the basic design figured out. Then I started thinking about what I needed to make this work. 
+
+#### Draggable Modals
+
+Terminals aare generally pretty low-tech. This site has some features that I feel aren't suited well to being displayed in a faux-terminal. For example: embedded CodePens or videos. 
+
+My solution was to display a button that, when clicked, would display a new window, or modal, that would display the embedded content. The user could drag the modal around the screen. 
+
+With shortcodes, the implementation is simple enough, at least in the configuration. You will need to give each modal in a post it's own unique ID. For me that is "modal01", then "modal02", then "modal03", etc...
+
+I set up a shortcode for a button like this:
+
+```javascript
+export default function (eleventyConfig) {
+    eleventyConfig.addShortcode("modalBtn", function(modalID, text) {
+        return `<button class="open-btn" data-open-target="${modalID}">${text}</button>`
+    })
+    /** add code for shortcode for modal */
+}
+```
+
+So say I wanted to open a CodePen modal for a pen displaying some CSS artwork of a sunset, I would create a button like this:
+
+{% raw %}`{% modalBtn modal01 "See my CSS Sunset!" %}`{% endraw %}
+
+Then we can add the shortcode for the modal itself. CodePen has a specific code to use for embeds, so there are a few more parameters in this code:
+
+```javascript
+    eleventyConfig.addShortcode("codepen", function(user, id, modalID, fullname, pentitle) {
+        return `<div class="codepen-modal modal hide-modal" id="${modalID}" data-drag="false"><div class="modal-header"><button class="close-btn" data-close-target="${modalID}"></button><div class="drag-bar" data-drag-target="${modalID}"><hr></div></div><div class="modal-content"><iframe height="600" style="width: 800px;" scrolling="no" src="https://codepen.io/${user}/embed/${id}?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">See the Pen <a href="https://codepen.io/${user}/pen/${id}">${pentitle}</a> by ${fullname} (<a href="https://codepen.io/${user}">@${user}</a>) on <a href="https://codepen.io">CodePen</a>.</iframe></div></div>`
+    })
+```
+
+Here, `user` is the CodePen username, `id` is the pen's ID,`modalID` is the ID of the modal element in the DOM, `fullname` is the name of the user, and `pentitle` is the title of the pen. 
+
+In `main.css`:
+
+```css
+.hide-modal {
+    display: none !important;
+}
+```
+
+This ensures that the modal remains hidden, at least until I click the button. 
+
+I write the code for the functionality of the modals in `scripts/embedModals.js` then import it into `scripts/main.js`, which is loaded into my base layout before the closing `</body>` tag: `<script type="module" src="/scripts/main.js">`.[^6]
+
+##### Comments Modal
+
+I use a quick and easy commenting tool [komments](https://komments.cloud), which creates a site where comments can be made and are stored. This site can be embedded. I decided that would be something else that could be useful for a draggable modal. 
+
+I already use a `comments_url` frontmatter property for the commenting site to embed to each post. I added a snippet to my `base.njk` layout that checks if that property has been added:
+
+{% raw %}
+```njk
+{% if comments_url %}
+    {% modalBtn "comments-modal", "Comments" %}
+    {% comments %}
+    {{ comments_url }}
+    {% endcomments %}
+{% endif %}
+```
+{% endraw %}
+
+I create a new modal button that will open a modal with the ID `comments-modal`. The {% raw %}`{% comments %}`{% endraw %} block is actually a paired shortcode I created for the actual draggable comments modal. Paired shortcodes allow you to nest in variables -- in this case `comments_url`. 
+
+#### Syntax Highlighting
+
+My preformatted codeblocks (the ones in the `<pre>` tags) were looking pretty plain so I decided to check out the official Eleventy [Syntax Highlighting Plugin](https://www.11ty.dev/docs/plugins/syntaxhighlight/). This plugin allows for PrismJS syntax highlighting, using any theme available for Prism. 
+
+[Prism's website](https://prismjs.com/) only listed a few themes and I wasn't super impressed with the selection, but I decided to search "Prism Theme" on Github and the community had me covered. 
+
+Shout out to this [VS Code to Prism theme converter tool](https://prism.dotenv.dev/)[^7]. This allowed me to take **any** theme from Visual Studio Code (or VS Codium) and create a stylesheet that worked with the plugin. 
+
+This is a build-time plugin, meaning there are no JavaScript files provided for the browser to load. However, to get the labels (on the top right corner of the codeblocks) to work the way I wanted, I had to add my own scripts and a little of my own styling. 
+
+### Things I Didn't Mention
+
+- Additional Markdown-It plugins:
+    - [Footnotes](https://mdit-plugins.github.io/footnote.html)
+    - [Container](https://mdit-plugins.github.io/container.html)
+- [Atom/RSS Feed](/feed.xml)[^8]
+- My drafts workflow[^9]
+- [Webmentions](https://webmentions.io)[^10]
+- Using global data files to:
+    - Create a blogroll
+    - Create a row of social media icons
+- Setting up [pagination to navigate](https://www.11ty.dev/docs/pagination/nav/) through the blog
+
 ### Footnotes
 
 [^1]: You can find the [demo here](https://the-bellwether.meganrenae.me/) and the [source code here](https://github.com/meganrenae21/the-bellwether).
@@ -543,3 +631,15 @@ My experience in making The Bellwether reminded me how fun it could be to build 
 [^4]: This has been labeled a [common pitfall](https://www.11ty.dev/docs/dates/#dates-off-by-one-day) in the Eleventy docs.
 
 [^5]: Also view the complete code for these at the Github repo: [reading-time.js](https://github.com/meganrenae21/the-bellwether/blob/main/js/reading-time.js) and [toc.js](https://github.com/meganrenae21/the-bellwether/blob/main/js/toc.js)
+
+[^6]: I wanted to keep from getting into the full JavaScript tutorial, but you can see the script [here](https://github.com/meganrenae21/meganrenaedotme/blob/main/src/scripts/embedModals.js).
+
+[^7]: [Repository link](https://github.com/SaraVieira/prism-theme-converter)
+
+
+[^8]: From the [Eleventy RSS Plugin](https://www.11ty.dev/docs/plugins/rss/)
+
+
+[^9]: This was pretty much taken verbatim from [the example from the Eleventy docs](https://www.11ty.dev/docs/config-preprocessors/#example-drafts)
+
+[^10]: Technically not an 11ty thing, but new to the site so it counts, I think.
