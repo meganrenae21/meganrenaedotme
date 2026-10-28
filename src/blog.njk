@@ -11,7 +11,7 @@ pagination:
 
 <ul class="post-list">
     {%- for post in collections.posts | reverse %}
-        <li><span class="post-index-date">{{ post.date | shortDate }}</span> <a href="{{ post.url }}" class="internal-link">{{ post.data.title }}</a> {%- if post.data.tags %}{%- for tag in post.data.tags %} <a class="post-index-tag-link internal-link" href="/tags/{{ tag | slug }}.html">{{ tag }}</a> {%- endfor %}{%- endif %}</li>
+        <li><span class="post-index-date">{{ post.date | shortDate }}</span> <a href="{{ post.url }}" class="internal-link">{{ post.data.title }}</a> {%- if post.data.tags %}{%- for tag in post.data.tags %} <a class="post-index-tag-link internal-link" href="/tags/{{ tag | slug }}/">{{ tag }}</a> {%- endfor %}{%- endif %}</li>
     {%- endfor %}
 </ul>
 <nav class="post-list-nav" aria-label="pagination">

@@ -4,6 +4,7 @@ title: "Third Iteration: Welcome to My 11ty Terminal"
 date: 2026-10-28
 permalink: posts/third-iteration-my-11ty-terminal.html
 tags: [eleventy, blogging, webdev]
+comments_url: https://komments.cloud/c4b05116af7983304cba41
 ---
 
 It has been a year since my last post, and I have ([again](posts/org-to-jekyll-new-beginning/)) decided to revamp this space. This time I've moved over from [Jekyll](https://jekyllrb.com) to [Eleventy](https://11ty.dev). And now I'm going to tell you how and why. 
