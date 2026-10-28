@@ -196,7 +196,12 @@ h2.post-title {
     letter-spacing: 0.1em;
     border-bottom: 2px dashed var(--purple-light);
     border-top: 2px dashed var(--purple-light);
+    margin: 0.5em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 
 h3 {
     color: var(--yellow);
@@ -241,7 +246,7 @@ code:not(pre code) {
 }
 
 main {
-  width: calc(100% - 16px);
+  width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
@@ -438,9 +443,10 @@ li.footnote-item:nth-of-type(even) > {
 }
 
 p.post-metadata {
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0.5em 0;
+  padding: 0;
   background-color: var(--magenta-mid-dark);
+  width: 100%;
 }
 
 p:has(.img-center) {
@@ -597,9 +603,23 @@ ol.footnotes-list {
 }
 
 .h-entry {
-  width: 100%;
+  width: calc(100% - 16px);
   padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.h-entry > * {
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+main {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
