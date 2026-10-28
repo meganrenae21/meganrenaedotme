@@ -8,6 +8,6 @@ eleventyComputed:
 
 <div class="tag-cloud">
     {%- for tag in collections.tags | sort %}
-        <a class="tag-cloud-link internal-link" href="/tags/{{ tag | slug }}">{{ tag }}</a>
+        <a class="tag-cloud-link internal-link" href="/tags/{{ tag | slug }}/">{{ tag }}</a>
     {%- endfor %}
 </div>
