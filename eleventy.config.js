@@ -88,6 +88,10 @@ export default function (eleventyConfig) {
         return `<button class="open-btn" data-open-target="${modalID}">${text}</button>`
     })
 
+    eleventyConfig.addShortcode("icon", function(theme, icon, color){
+        return `<i class="${theme} ${icon}" style="color: ${color};"></i>`
+    })
+
     const mdoptions = {
         html: true,
         breaks: true,

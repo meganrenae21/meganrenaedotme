@@ -1,9 +1,11 @@
 ---
 layout: base.njk
 ---
+<article class="page-content">
 {% if title %}
 <h2 class="page-title">{{ title }}</h2> 
 {% endif %} 
 <main role="main">
 {{ content | safe }}
 </main>
+</article>

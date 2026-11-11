@@ -1,9 +1,7 @@
 ---
 eleventyExcludeFromCollections: true
 layout: page.njk
-permalink: tags/{{ tag | slug }}/
-eleventyComputed:
-  command: "ls posts --{{ permalink | safe }}"
+permalink: /tags/{{ tag | slug }}/
 pagination: 
   data: collections.tags
   size: 1

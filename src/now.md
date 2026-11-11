@@ -3,8 +3,7 @@ layout: page.njk
 title: Now
 date: 2026-08-15
 alias: now
-eleventyComputed:
-  command: "open now"
+permalink: /now/
 ---
 
 *Last updated {{ page.date | shortDate }}*

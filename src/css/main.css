@@ -602,6 +602,7 @@ ol.footnotes-list {
   margin: 0;
 }
 
+.page-content,
 .h-entry {
   width: calc(100% - 16px);
   padding: 0;
@@ -625,6 +626,26 @@ main {
   justify-content: flex-start;
   align-items: stretch;
 }
+
+table {
+  border-collapse: collapse;
+  border: 1px solid var(--white);
+  margin: 1em;
+  color: var(--white);
+  font-family: var(--text-font);
+}
+
+thead {
+  border-bottom: 2px solid var(--white);
+  font-weight: 600;
+}
+
+td, th {
+  font-size: 16px;
+  border: 1px solid var(--white);
+  padding: 0.5em;
+}
+
 
 @media (width > 400px) {
   #terminal {
